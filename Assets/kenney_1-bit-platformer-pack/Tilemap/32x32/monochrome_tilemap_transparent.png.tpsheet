@@ -1,0 +1,33 @@
+{
+	"textures": [
+		{
+			"image": "monochrome_tilemap_transparent.png.png",
+			"size": {
+				"w": 680,
+				"h": 680
+			},
+			"sprites": [
+				{
+					"filename": "monochrome_tilemap_transparent.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 678,
+						"h": 678
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:9c2acdaeecd52512e45b979bd262accc:659292421c78644321c1b5ad2a393328:48fa5ed4138a2804fdbc1a0cfd2e97db$"
+	}
+}
