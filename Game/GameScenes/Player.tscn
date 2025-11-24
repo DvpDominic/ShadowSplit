@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blpyvuv563hu7"]
+[gd_scene load_steps=16 format=3 uid="uid://blpyvuv563hu7"]
 
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="1_e8qlj"]
 [ext_resource type="Script" uid="uid://b6rbrunuklhka" path="res://Game/Scripts/Player.gd" id="1_wqfep"]
@@ -19,6 +19,34 @@ region = Rect2(48, 0, 24, 24)
 atlas = ExtResource("1_e8qlj")
 region = Rect2(72, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u337"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdhw4"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uxy8"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndra8"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ifnu"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubib"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04r2w"]
+atlas = ExtResource("1_e8qlj")
+region = Rect2(264, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8u337"]
 animations = [{
 "frames": [{
@@ -37,6 +65,32 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u337")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdhw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uxy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndra8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ifnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ubib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04r2w")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
@@ -48,9 +102,9 @@ script = ExtResource("1_wqfep")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_8u337")
-animation = &"Idle"
+animation = &"Run"
 autoplay = "Idle"
-frame_progress = 0.507862
+frame_progress = 0.359112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -8.5)
