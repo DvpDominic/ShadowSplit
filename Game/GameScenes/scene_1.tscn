@@ -447,7 +447,7 @@ position = Vector2(0, 625.5)
 visible = false
 shape = SubResource("WorldBoundaryShape2D_oi11m")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorSwitch" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_mvb83")
 offset_right = 1080.0
 offset_bottom = 720.0
