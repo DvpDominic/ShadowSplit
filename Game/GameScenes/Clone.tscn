@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cmjwn07hvexu0"]
 
-[ext_resource type="Script" uid="uid://b6rbrunuklhka" path="res://Game/Scripts/Player.gd" id="1_0klbr"]
+[ext_resource type="Script" uid="uid://pp3dy2jr4mlk" path="res://Game/Scripts/Clone.gd" id="1_0klbr"]
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="2_1sam3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
@@ -82,9 +82,7 @@ _data = {
 &"Run": SubResource("Animation_8u337")
 }
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
+[node name="Clone" type="CharacterBody2D"]
 script = ExtResource("1_0klbr")
 
 [node name="Sprite" type="Sprite2D" parent="."]

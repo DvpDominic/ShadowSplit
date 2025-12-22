@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://ce62gs5swlweu"]
+[gd_scene load_steps=12 format=4 uid="uid://ce62gs5swlweu"]
 
 [ext_resource type="Texture2D" uid="uid://81g088dq5nmt" path="res://Assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_packed.png" id="1_kdksv"]
+[ext_resource type="Script" uid="uid://sk8mepxsd6fu" path="res://Game/Scripts/GameManager.gd" id="1_pyd7h"]
 [ext_resource type="Shader" uid="uid://brv4fglkb2nag" path="res://Game/Shaders/Switcher.gdshader" id="2_v8x27"]
 [ext_resource type="PackedScene" uid="uid://blpyvuv563hu7" path="res://Game/GameScenes/Player.tscn" id="3_mvb83"]
 [ext_resource type="Shader" uid="uid://dn2h64bf1xsui" path="res://Game/Shaders/TvEffect.gdshader" id="4_oi11m"]
@@ -426,7 +427,10 @@ shader_parameter/scan_speed = 2.0
 shader_parameter/flicker_intensity = 0.1
 shader_parameter/flicker_speed = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oi11m"]
+
 [node name="Scene1" type="Node2D"]
+script = ExtResource("1_pyd7h")
 metadata/_edit_horizontal_guides_ = [720.0]
 metadata/_edit_vertical_guides_ = [1080.0]
 
@@ -464,3 +468,14 @@ offset_left = -4.0
 offset_top = -4.0
 offset_right = 1079.0
 offset_bottom = 720.0
+
+[node name="Portal" type="Area2D" parent="."]
+position = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+position = Vector2(1000, 600)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_oi11m")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(50, 624)
