@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6rbrunuklhka" path="res://Game/Scripts/Player.gd" id="1_wqfep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
-size = Vector2(12, 16)
+size = Vector2(30, 48)
 
 [sub_resource type="Animation" id="Animation_wqfep"]
 resource_name = "Idle"
@@ -84,14 +84,16 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_wqfep")
+speed = 256
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -36)
+scale = Vector2(3, 3)
 texture = ExtResource("1_e8qlj")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -8)
+position = Vector2(-3, -24)
 shape = SubResource("RectangleShape2D_e8qlj")
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]

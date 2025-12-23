@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player = $Player
+@export var player : CharacterBody2D
 @onready var portal = $Portal # Area2D trigger
 var recorded_ghost_data = []
 var is_second_run = false
@@ -29,15 +29,13 @@ func start_second_run():
 	# 3. Spawn Clone
 	var clone_path = "res://Game/GameScenes/Clone.tscn"
 	if ResourceLoader.exists(clone_path):
-		print("DEBUG: Clone scene found at path!")
 		var clone_scene = load(clone_path)
 		var clone = clone_scene.instantiate()
 		
 		add_child(clone)
-		print("DEBUG: Clone added to Scene Tree")
 		
 		clone.start_replay(recorded_ghost_data)
-		print("DEBUG: Replay started")
+
 		is_second_run = true
 	else:
 		printerr("ERROR: Clone scene NOT found at: ", clone_path)

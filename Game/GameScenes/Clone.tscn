@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="2_1sam3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
-size = Vector2(12, 16)
+size = Vector2(30, 48)
 
 [sub_resource type="Animation" id="Animation_wqfep"]
 resource_name = "Idle"
@@ -86,12 +86,15 @@ _data = {
 script = ExtResource("1_0klbr")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -36)
+scale = Vector2(3, 3)
 texture = ExtResource("2_1sam3")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -8)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-3, -24)
 shape = SubResource("RectangleShape2D_e8qlj")
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]

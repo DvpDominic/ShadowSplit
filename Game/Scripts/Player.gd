@@ -7,11 +7,19 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @onready var spriteAnimator = $SpriteAnimator
 
+var _scale = 0
+
 var is_recording = true
 var frame_data = []
 
+func _ready() -> void:
+	_scale = sprite.scale.x
+
 func _physics_process(delta):
 	
+	if(is_recording):
+		record_data()
+		
 	apply_gravity(delta)
 		
 	var input_axis = Input.get_axis("ui_left", "ui_right")
@@ -27,7 +35,7 @@ func apply_gravity(delta):
 func apply_horizontal_force(delta, input_axis):
 	if input_axis !=0:
 		velocity.x = input_axis * speed
-		sprite.scale.x = input_axis
+		sprite.scale.x = _scale * input_axis
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
