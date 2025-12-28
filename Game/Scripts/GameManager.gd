@@ -42,28 +42,23 @@ func _on_portal_entered(body):
 		body.queue_free()
 		# Clear existing clones
 		get_tree().call_group("clones", "queue_free")
+		clone_spawn_timer.stop()
 		
 		run_count += 1
 		call_deferred("spawn_player")
 		
-		# Start spawning clones from all previous runs
-		current_clone_index = 0
 		var clones_to_spawn = recorded_ghost_data.size()
 		if clones_to_spawn > 0:
 			clone_spawn_timer.start()
 
 func _spawn_next_clone():
-	if current_clone_index < recorded_ghost_data.size():
+	if recorded_ghost_data.size() > 0:
 		var clone = clone_scene.instantiate()
 		clone.global_position = portal.global_position
 		clone.add_to_group("clones")
 		add_child(clone)
-		clone.start_replay(recorded_ghost_data[current_clone_index].duplicate())
-		current_clone_index += 1
-		
-	else:
-		clone_spawn_timer.stop()
-		current_clone_index = 0
+		clone.start_replay(recorded_ghost_data.duplicate())
+		clone_spawn_timer.start()
 
 #func start_second_run():
 	#print("Starting Run 2: Clone Activated")
