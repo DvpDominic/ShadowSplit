@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://ce62gs5swlweu"]
+[gd_scene load_steps=13 format=4 uid="uid://ce62gs5swlweu"]
 
 [ext_resource type="Texture2D" uid="uid://81g088dq5nmt" path="res://Assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_packed.png" id="1_kdksv"]
 [ext_resource type="Script" uid="uid://sk8mepxsd6fu" path="res://Game/Scripts/GameManager.gd" id="1_pyd7h"]
 [ext_resource type="Shader" uid="uid://brv4fglkb2nag" path="res://Game/Shaders/Switcher.gdshader" id="2_v8x27"]
-[ext_resource type="PackedScene" uid="uid://blpyvuv563hu7" path="res://Game/GameScenes/Player.tscn" id="3_mvb83"]
 [ext_resource type="Shader" uid="uid://dn2h64bf1xsui" path="res://Game/Shaders/TvEffect.gdshader" id="4_oi11m"]
+[ext_resource type="Texture2D" uid="uid://dwumjscp7h5l8" path="res://Assets/circle-16.png" id="6_oq37i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v8x27"]
 texture = ExtResource("1_kdksv")
@@ -429,9 +429,12 @@ shader_parameter/flicker_speed = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oi11m"]
 
-[node name="Scene1" type="Node2D" node_paths=PackedStringArray("player")]
+[sub_resource type="Curve" id="Curve_oq37i"]
+_data = [Vector2(0.0104895, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Scene1" type="Node2D"]
 script = ExtResource("1_pyd7h")
-player = NodePath("Player")
 metadata/_edit_horizontal_guides_ = [720.0]
 metadata/_edit_vertical_guides_ = [1080.0]
 
@@ -457,9 +460,6 @@ material = SubResource("ShaderMaterial_mvb83")
 offset_right = 1080.0
 offset_bottom = 720.0
 
-[node name="Player" parent="." instance=ExtResource("3_mvb83")]
-position = Vector2(50, 624)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TvEffect" type="ColorRect" parent="CanvasLayer"]
@@ -470,12 +470,26 @@ offset_right = 1079.0
 offset_bottom = 720.0
 
 [node name="Portal" type="Area2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(1000, 595)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(1000, 600)
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_oi11m")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Portal"]
+amount = 100
+texture = ExtResource("6_oq37i")
+lifetime = 2.0
+speed_scale = 10.0
+randomness = 1.0
+emission_shape = 2
+emission_sphere_radius = 25.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angular_velocity_max = 10.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_oq37i")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(50, 624)

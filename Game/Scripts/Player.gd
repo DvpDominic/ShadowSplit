@@ -57,6 +57,6 @@ func update_animation(input_axis):
 func record_data():
 	var current_frame = {
 		"pos" : global_position,
-		"flip" : sprite.flip_h,
+		"anim" : spriteAnimator.current_animation
 	}
 	frame_data.append(current_frame)
