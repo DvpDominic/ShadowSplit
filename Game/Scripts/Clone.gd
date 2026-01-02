@@ -8,11 +8,10 @@ var curr_index = 0
 func _physics_process(delta):
 	if curr_index > -1:
 		var frame = replay_data[curr_index]
-		
-		var prev_pos = replay_data[curr_index - 1]["pos"]
-		var diff = frame["pos"].x - prev_pos.x
-		if abs(diff) > 0.1:
-				sprite.flip_h = diff > 0
+		#var prev_frame = replay_data[curr_index - 1]
+		#var diff = frame["pos"].x - prev_frame["pos"].x
+		#if abs(diff) > 0.1:
+				#sprite.flip_h = diff > 0
 				
 		global_position = frame["pos"]
 		spriteAnimator.play(frame["anim"])
