@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://ce62gs5swlweu"]
 
 [ext_resource type="Texture2D" uid="uid://81g088dq5nmt" path="res://Assets/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_packed.png" id="1_kdksv"]
-[ext_resource type="Script" uid="uid://sk8mepxsd6fu" path="res://Game/Scripts/GameManager.gd" id="1_pyd7h"]
+[ext_resource type="Script" uid="uid://br7c3022g5b5o" path="res://Game/Scripts/SceneManager.gd" id="1_pyd7h"]
 [ext_resource type="Shader" uid="uid://brv4fglkb2nag" path="res://Game/Shaders/Switcher.gdshader" id="2_v8x27"]
 [ext_resource type="Shader" uid="uid://dn2h64bf1xsui" path="res://Game/Shaders/TvEffect.gdshader" id="4_oi11m"]
 [ext_resource type="Texture2D" uid="uid://dwumjscp7h5l8" path="res://Assets/circle-16.png" id="6_oq37i"]
