@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b5r3lcvjfu77a"]
+
+[ext_resource type="Shader" uid="uid://brv4fglkb2nag" path="res://Game/Shaders/Switcher.gdshader" id="1_7n78h"]
+
+[resource]
+shader = ExtResource("1_7n78h")
+shader_parameter/flip = 1

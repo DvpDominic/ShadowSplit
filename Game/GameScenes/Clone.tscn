@@ -1,7 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmjwn07hvexu0"]
+[gd_scene load_steps=11 format=3 uid="uid://cmjwn07hvexu0"]
 
 [ext_resource type="Script" uid="uid://pp3dy2jr4mlk" path="res://Game/Scripts/Clone.gd" id="1_0klbr"]
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="2_1sam3"]
+[ext_resource type="Shader" uid="uid://bjb2r78a0f15" path="res://Game/Shaders/SpriteGlitch.gdshader" id="3_1sam3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sam3"]
+shader = ExtResource("3_1sam3")
+shader_parameter/shake_power = 0.01
+shader_parameter/shake_speed = 20.0
+shader_parameter/color_separation = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
 size = Vector2(30, 48)
@@ -86,6 +93,7 @@ _data = {
 script = ExtResource("1_0klbr")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1sam3")
 position = Vector2(0, -36)
 scale = Vector2(3, 3)
 texture = ExtResource("2_1sam3")
