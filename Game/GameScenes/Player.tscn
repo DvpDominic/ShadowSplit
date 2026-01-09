@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://blpyvuv563hu7"]
+[gd_scene load_steps=10 format=3 uid="uid://blpyvuv563hu7"]
 
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="1_e8qlj"]
 [ext_resource type="Script" uid="uid://b6rbrunuklhka" path="res://Game/Scripts/Player.gd" id="1_wqfep"]
+[ext_resource type="Material" uid="uid://dxmok070riday" path="res://Game/Shaders/SwitcherSprite.tres" id="2_q6hnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
 size = Vector2(30, 48)
@@ -87,6 +88,7 @@ script = ExtResource("1_wqfep")
 speed = 256
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_q6hnn")
 position = Vector2(0, -36)
 scale = Vector2(3, 3)
 texture = ExtResource("1_e8qlj")

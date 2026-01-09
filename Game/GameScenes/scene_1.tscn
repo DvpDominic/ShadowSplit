@@ -431,7 +431,7 @@ shader_parameter/flicker_speed = 5.0
 
 [node name="Scene1" type="Node2D" node_paths=PackedStringArray("switch_rect")]
 script = ExtResource("1_pyd7h")
-switch_rect = NodePath("CanvasLayer/ColorSwitch")
+switch_rect = NodePath("ColorSwitch")
 switcher = ExtResource("3_pyd7h")
 metadata/_edit_horizontal_guides_ = [720.0]
 metadata/_edit_vertical_guides_ = [1080.0]
@@ -475,19 +475,20 @@ scale_amount_min = 0.25
 scale_amount_max = 0.25
 scale_amount_curve = SubResource("Curve_oq37i")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorSwitch" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorSwitch" type="ColorRect" parent="."]
 material = ExtResource("3_pyd7h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1080.0
+offset_left = 1.0
+offset_right = 1081.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1)
 pivot_offset = Vector2(1080, 360)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TvEffect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_pyd7h")

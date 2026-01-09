@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dxmok070riday"]
+
+[ext_resource type="Shader" uid="uid://hgpmisf5p845" path="res://Game/Shaders/SwitcherSprite.gdshader" id="1_nxlqr"]
+
+[resource]
+shader = ExtResource("1_nxlqr")
+shader_parameter/flip = false

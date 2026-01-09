@@ -3,6 +3,8 @@ extends Node
 var player_scene = preload("res://Game/GameScenes/Player.tscn")
 var clone_scene = preload("res://Game/GameScenes/Clone.tscn")
 
+var player_switcher = preload("res://Game/Shaders/SwitcherSprite.tres")
+
 var scene_manager : SceneManager
 
 var clone_spawn_timer : Timer
@@ -30,11 +32,15 @@ func _portal_entered(body):
 	else:
 		is_second_run = true
 		
+	player_switcher.set_shader_parameter("flip", true)
 	# Save this run's recording
 	body.is_recording = false
 	recorded_ghost_data = body.frame_data
 	body.queue_free()
 	
+	_start_second_run()
+
+func _start_second_run():
 	call_deferred("spawn_player")
 	
 	if recorded_ghost_data.size() > 0:
@@ -46,7 +52,7 @@ func _spawn_next_clone():
 		clone.global_position = scene_manager.portal.global_position
 		clone.add_to_group("clones")
 		scene_manager.add_child(clone)
-		clone.start_replay(recorded_ghost_data)
+		clone.start_replay(recorded_ghost_data,false)
 		clone_spawn_timer.start()
 
 func _end_level():

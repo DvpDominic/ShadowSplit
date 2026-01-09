@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_7n78h")
-shader_parameter/flip = 1
+shader_parameter/flip = 0
