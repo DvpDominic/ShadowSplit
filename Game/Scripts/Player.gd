@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite
 @onready var spriteAnimator = $SpriteAnimator
+@onready var collisionArea = $CollisionArea
 
 var _scale = 0
 
@@ -14,6 +15,7 @@ var frame_data = []
 
 func _ready() -> void:
 	_scale = sprite.scale.x
+	collisionArea.body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
 	
@@ -60,3 +62,7 @@ func record_data():
 		"anim" : spriteAnimator.current_animation
 	}
 	frame_data.append(current_frame)
+
+func _on_body_entered(body):
+	if body.is_in_group("clones"):
+		GameManager._end_level(self,body)

@@ -6,6 +6,8 @@ class_name SceneManager
 @export var switch_rect : ColorRect
 @export var switcher : ShaderMaterial
 
+
+
 func _ready():
 	switcher.set_shader_parameter("flip",0)
 	portal.body_entered.connect(_on_portal_entered)

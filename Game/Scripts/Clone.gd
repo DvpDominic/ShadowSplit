@@ -5,12 +5,22 @@ var curr_index = 0
 @onready var sprite = $Sprite
 @onready var spriteAnimator = $SpriteAnimator
 
+signal check_fast_run(fast : bool)
+
 var fast_run : bool
 
 func _physics_process(delta):
 	if(fast_run):
-		return
-	
+		if curr_index > -1:
+			var frame = replay_data[curr_index]
+			global_position = frame["pos"]
+			spriteAnimator.play(frame["anim"])
+			curr_index -= 3
+			if curr_index < -1:
+				curr_index = -1
+		else:
+				check_fast_run.emit(false)
+				queue_free()
 	else :
 		if curr_index > -1:
 			var frame = replay_data[curr_index]

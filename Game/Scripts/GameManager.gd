@@ -10,6 +10,7 @@ var scene_manager : SceneManager
 var clone_spawn_timer : Timer
 var recorded_ghost_data = []
 var is_second_run = false
+var is_fast_run = true
 
 func _ready():
 	
@@ -27,7 +28,7 @@ func spawn_player():
 
 func _portal_entered(body):
 	if(is_second_run):
-		_end_level()
+		_end_level(null,null)
 		return
 	else:
 		is_second_run = true
@@ -38,13 +39,11 @@ func _portal_entered(body):
 	recorded_ghost_data = body.frame_data
 	body.queue_free()
 	
-	_start_second_run()
+	if recorded_ghost_data.size() > 0:
+		call_deferred("_spawn_next_clone")
 
 func _start_second_run():
 	call_deferred("spawn_player")
-	
-	if recorded_ghost_data.size() > 0:
-		call_deferred("_spawn_next_clone")
 
 func _spawn_next_clone():
 	if recorded_ghost_data.size() > 0:
@@ -52,10 +51,19 @@ func _spawn_next_clone():
 		clone.global_position = scene_manager.portal.global_position
 		clone.add_to_group("clones")
 		scene_manager.add_child(clone)
-		clone.start_replay(recorded_ghost_data,false)
+		clone.start_replay(recorded_ghost_data,is_fast_run)
 		clone_spawn_timer.start()
+		clone.connect("check_fast_run",_callback)
 
-func _end_level():
+func _callback(fast:bool):
+	is_fast_run = fast
+	_start_second_run()
+
+func _end_level(player,body):
+	if(player != null and body != null):
+		player.queue_free()
+		body.queue_free()
 	is_second_run = false
+	is_fast_run = true
 	recorded_ghost_data = []
 	get_tree().reload_current_scene()

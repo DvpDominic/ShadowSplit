@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blpyvuv563hu7"]
+[gd_scene load_steps=11 format=3 uid="uid://blpyvuv563hu7"]
 
 [ext_resource type="Texture2D" uid="uid://bgcwme2fukn0x" path="res://Assets/Player/Player.png" id="1_e8qlj"]
 [ext_resource type="Script" uid="uid://b6rbrunuklhka" path="res://Game/Scripts/Player.gd" id="1_wqfep"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qlj"]
 size = Vector2(30, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6hnn"]
+size = Vector2(36, 48)
 
 [sub_resource type="Animation" id="Animation_wqfep"]
 resource_name = "Idle"
@@ -97,6 +100,12 @@ hframes = 12
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -24)
 shape = SubResource("RectangleShape2D_e8qlj")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(-3, -24)
+shape = SubResource("RectangleShape2D_q6hnn")
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]
 libraries = {
