@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 var _scale = 0
 
-var is_recording = true
+var is_recording = false
 var frame_data = []
 
 func _ready() -> void:
@@ -36,6 +36,8 @@ func apply_gravity(delta):
 
 func apply_horizontal_force(delta, input_axis):
 	if input_axis !=0:
+		if(!is_recording):
+			is_recording = true
 		velocity.x = input_axis * speed
 		sprite.scale.x = _scale * input_axis
 	else:
@@ -65,4 +67,5 @@ func record_data():
 
 func _on_body_entered(body):
 	if body.is_in_group("clones"):
+		is_recording = false
 		GameManager._end_level(self,body)
