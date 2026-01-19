@@ -15,7 +15,7 @@ var is_fast_run = true
 func _ready():
 	
 	clone_spawn_timer = Timer.new()
-	clone_spawn_timer.wait_time = 2.5  # Interval between clone spawns
+	clone_spawn_timer.wait_time = 2  # Interval between clone spawns
 	clone_spawn_timer.one_shot = false
 	clone_spawn_timer.timeout.connect(_spawn_next_clone)
 	add_child(clone_spawn_timer)
@@ -66,4 +66,5 @@ func _end_level(player,body):
 	is_second_run = false
 	is_fast_run = true
 	recorded_ghost_data = []
+	player_switcher.set_shader_parameter("flip", false)
 	get_tree().reload_current_scene()
