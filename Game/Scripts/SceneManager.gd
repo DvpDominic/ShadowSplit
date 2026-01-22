@@ -18,7 +18,6 @@ func _ready():
 func _on_portal_entered(body):
 	if body.is_in_group("player"):
 		GameManager._portal_entered(body)
-		_animate_switch()
 
 func _animate_switch():
 	switcher.set_shader_parameter("flip",1)

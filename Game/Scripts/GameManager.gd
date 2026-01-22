@@ -44,6 +44,7 @@ func _portal_entered(body):
 
 func _start_second_run():
 	call_deferred("spawn_player")
+	_spawn_next_clone()
 
 func _spawn_next_clone():
 	if recorded_ghost_data.size() > 0:
@@ -52,19 +53,22 @@ func _spawn_next_clone():
 		clone.add_to_group("clones")
 		scene_manager.add_child(clone)
 		clone.start_replay(recorded_ghost_data,is_fast_run)
-		clone_spawn_timer.start()
+		if(!is_fast_run):
+			clone_spawn_timer.start()
 		clone.connect("check_fast_run",_callback)
 
 func _callback(fast:bool):
 	is_fast_run = fast
+	scene_manager._animate_switch()
 	_start_second_run()
 
 func _end_level(player,body):
 	if(player != null and body != null):
 		player.queue_free()
 		body.queue_free()
+	clone_spawn_timer.stop()
 	is_second_run = false
 	is_fast_run = true
 	recorded_ghost_data = []
 	player_switcher.set_shader_parameter("flip", false)
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
