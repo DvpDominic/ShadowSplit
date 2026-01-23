@@ -12,8 +12,12 @@ var recorded_ghost_data = []
 var is_second_run = false
 var is_fast_run = true
 
+var current_level : int
+var levels = preload("res://Game/GameScenes/Level_data.tres")
+
 func _ready():
 	
+	current_level = 0
 	clone_spawn_timer = Timer.new()
 	clone_spawn_timer.wait_time = 2  # Interval between clone spawns
 	clone_spawn_timer.one_shot = false
