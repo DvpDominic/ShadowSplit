@@ -32,7 +32,7 @@ func spawn_player():
 
 func _portal_entered(body):
 	if(is_second_run):
-		_end_level(null,null)
+		_end_level(null,null,true)
 		return
 	else:
 		is_second_run = true
@@ -66,7 +66,7 @@ func _callback(fast:bool):
 	scene_manager._animate_switch()
 	_start_second_run()
 
-func _end_level(player,body):
+func _end_level(player,body,status):
 	if(player != null and body != null):
 		player.queue_free()
 		body.queue_free()
@@ -75,4 +75,13 @@ func _end_level(player,body):
 	is_fast_run = true
 	recorded_ghost_data = []
 	player_switcher.set_shader_parameter("flip", false)
-	get_tree().call_deferred("reload_current_scene")
+	#get_tree().call_deferred("reload_current_scene")
+	_play_next_level(status)
+	
+func _play_next_level(status):
+	if(status):
+		current_level += 1
+		get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
+	else:
+		get_tree().call_deferred("reload_current_scene")
+	

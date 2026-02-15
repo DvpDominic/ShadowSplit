@@ -69,4 +69,4 @@ func _on_body_entered(body):
 	if body.is_in_group("clones"):
 		is_recording = false
 		frame_data.clear()
-		GameManager._end_level(self,body)
+		GameManager._end_level(self,body,false)
