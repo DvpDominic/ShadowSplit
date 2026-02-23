@@ -70,3 +70,7 @@ func _on_body_entered(body):
 		is_recording = false
 		frame_data.clear()
 		GameManager._end_level(self,body,false)
+	elif body.is_in_group("Die"):
+		is_recording = false
+		frame_data.clear()
+		GameManager._end_level(self,null,false)
