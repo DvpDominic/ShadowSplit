@@ -7,6 +7,7 @@ var player_switcher = preload("res://Game/Shaders/SwitcherSprite.tres")
 
 var scene_manager : SceneManager
 
+var scene_timer : Timer
 var clone_spawn_timer : Timer
 var recorded_ghost_data = []
 var is_second_run = false
@@ -18,12 +19,23 @@ var levels = preload("res://Game/GameScenes/Level_data.tres")
 func _ready():
 	
 	current_level = 0
+	
 	clone_spawn_timer = Timer.new()
 	clone_spawn_timer.wait_time = 2  # Interval between clone spawns
 	clone_spawn_timer.one_shot = false
 	clone_spawn_timer.timeout.connect(_spawn_next_clone)
 	add_child(clone_spawn_timer)
 	
+	scene_timer = Timer.new()
+	scene_timer.wait_time = 15
+	scene_timer.one_shot = false
+	scene_timer.timeout.connect(_restart_level)
+	add_child(scene_timer)
+	scene_timer.start()
+
+func _restart_level():
+	_end_level(null,null,false)
+
 func spawn_player():
 	var player = player_scene.instantiate()
 	player.global_position = scene_manager.spawn.global_position
@@ -82,6 +94,7 @@ func _play_next_level(status):
 	if(status):
 		current_level += 1
 		get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
+		
 	else:
 		get_tree().call_deferred("reload_current_scene")
 	
