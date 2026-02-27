@@ -59,6 +59,7 @@ func _portal_entered(body):
 		call_deferred("_spawn_next_clone")
 
 func _start_second_run():
+	scene_timer.stop()
 	call_deferred("spawn_player")
 	_spawn_next_clone()
 
@@ -72,6 +73,16 @@ func _spawn_next_clone():
 		if(!is_fast_run):
 			clone_spawn_timer.start()
 		clone.connect("check_fast_run",_callback)
+
+func _spawn_multiple_clones():
+	var size = recorded_ghost_data.size()
+	if size > 0:
+		for i in range(1,4):
+			var clone = clone_scene.instantiate()
+			var frame = recorded_ghost_data[size * (i/3)]
+			clone.global_position = frame["pos"]
+			clone.add_to_group("clones")
+			scene_manager.add_child(clone)
 
 func _callback(fast:bool):
 	is_fast_run = fast
@@ -91,10 +102,10 @@ func _end_level(player,body,status):
 	_play_next_level(status)
 	
 func _play_next_level(status):
+	scene_timer.stop()
 	if(status):
 		current_level += 1
 		get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
-		
 	else:
 		get_tree().call_deferred("reload_current_scene")
-	
+	scene_timer.stop()
