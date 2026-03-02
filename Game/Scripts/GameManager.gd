@@ -62,6 +62,7 @@ func _start_second_run():
 	scene_timer.stop()
 	call_deferred("spawn_player")
 	_spawn_next_clone()
+	_spawn_multiple_clones()
 
 func _spawn_next_clone():
 	if recorded_ghost_data.size() > 0:
@@ -79,10 +80,15 @@ func _spawn_multiple_clones():
 	if size > 0:
 		for i in range(1,4):
 			var clone = clone_scene.instantiate()
-			var frame = recorded_ghost_data[size * (i/3)]
+			var num = ((size * i)/3) - 1
+			print(num)
+			var frame = recorded_ghost_data[num]
+			var data = recorded_ghost_data.slice(0,num)
 			clone.global_position = frame["pos"]
 			clone.add_to_group("clones")
 			scene_manager.add_child(clone)
+			clone.start_replay(data,false)
+			
 
 func _callback(fast:bool):
 	is_fast_run = fast
