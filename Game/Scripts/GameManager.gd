@@ -77,10 +77,11 @@ func _spawn_next_clone():
 
 func _spawn_multiple_clones():
 	var size = recorded_ghost_data.size()
+	var points = [0.5,0.75]
 	if size > 0:
-		for i in range(1,4):
+		for i in range(0,points.size()):
 			var clone = clone_scene.instantiate()
-			var num = ((size * i)/3) - 1
+			var num = size * points[i]
 			print(num)
 			var frame = recorded_ghost_data[num]
 			var data = recorded_ghost_data.slice(0,num)
