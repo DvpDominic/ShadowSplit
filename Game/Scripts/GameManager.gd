@@ -15,10 +15,13 @@ var is_fast_run = true
 
 var current_level : int
 var levels = preload("res://Game/GameScenes/Level_data.tres")
+var end_level = preload("res://Game/GameScenes/EndLevel.tscn")
+var total_levels : int
 
 func _ready():
 	
 	current_level = 0
+	total_levels = levels.Levels.size()
 	
 	clone_spawn_timer = Timer.new()
 	clone_spawn_timer.wait_time = 2  # Interval between clone spawns
@@ -77,7 +80,7 @@ func _spawn_next_clone():
 
 func _spawn_multiple_clones():
 	var size = recorded_ghost_data.size()
-	var points = [0.5,0.75]
+	var points = [0.6]
 	if size > 0:
 		for i in range(0,points.size()):
 			var clone = clone_scene.instantiate()
@@ -112,7 +115,10 @@ func _play_next_level(status):
 	scene_timer.stop()
 	if(status):
 		current_level += 1
-		get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
+		if(current_level == total_levels):
+			get_tree().call_deferred("change_scene_to_packed", end_level)
+		else:	
+			get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
 	else:
 		get_tree().call_deferred("reload_current_scene")
 	scene_timer.stop()
