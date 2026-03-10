@@ -15,7 +15,7 @@ shader_parameter/scan_speed = 2.0
 shader_parameter/flicker_intensity = 0.1
 shader_parameter/flicker_speed = 5.0
 
-[node name="EndGame" type="Node2D" node_paths=PackedStringArray("switch_rect")]
+[node name="EndLevel" type="Node2D" node_paths=PackedStringArray("switch_rect")]
 script = ExtResource("1_vudf2")
 switch_rect = NodePath("ColorSwitch")
 switcher = ExtResource("2_0gv31")

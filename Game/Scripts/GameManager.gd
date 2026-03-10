@@ -92,7 +92,6 @@ func _spawn_multiple_clones():
 			clone.add_to_group("clones")
 			scene_manager.add_child(clone)
 			clone.start_replay(data,false)
-			
 
 func _callback(fast:bool):
 	is_fast_run = fast

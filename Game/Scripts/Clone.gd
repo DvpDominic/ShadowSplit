@@ -34,7 +34,6 @@ func _physics_process(delta):
 			curr_index -= 1
 		else:
 				queue_free()	
-	
 
 func start_replay(data,fast):
 	fast_run = fast
