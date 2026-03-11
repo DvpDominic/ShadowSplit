@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cp31jisqpap8s"]
 
-[ext_resource type="Script" uid="uid://br7c3022g5b5o" path="res://Game/Scripts/SceneManager.gd" id="1_vudf2"]
+[ext_resource type="Script" uid="uid://cis70aaugsfem" path="res://Game/Scripts/EndGame.gd" id="1_6ftk8"]
 [ext_resource type="Material" uid="uid://b5r3lcvjfu77a" path="res://Game/Shaders/Switcher.tres" id="2_0gv31"]
 [ext_resource type="Shader" uid="uid://dn2h64bf1xsui" path="res://Game/Shaders/TvEffect.gdshader" id="5_pu07q"]
 
@@ -15,10 +15,8 @@ shader_parameter/scan_speed = 2.0
 shader_parameter/flicker_intensity = 0.1
 shader_parameter/flicker_speed = 5.0
 
-[node name="EndLevel" type="Node2D" node_paths=PackedStringArray("switch_rect")]
-script = ExtResource("1_vudf2")
-switch_rect = NodePath("ColorSwitch")
-switcher = ExtResource("2_0gv31")
+[node name="EndLevel" type="Node2D"]
+script = ExtResource("1_6ftk8")
 metadata/_edit_horizontal_guides_ = [720.0]
 metadata/_edit_vertical_guides_ = [1080.0]
 
@@ -59,7 +57,11 @@ offset_top = -4.0
 offset_right = 1079.0
 offset_bottom = 720.0
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Replay"
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 490.0
+offset_top = 453.0
+offset_right = 590.0
+offset_bottom = 503.0
+text = "Restart"
+
+[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_restart_button"]

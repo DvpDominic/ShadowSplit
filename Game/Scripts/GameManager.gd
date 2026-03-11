@@ -24,7 +24,7 @@ func _ready():
 	total_levels = levels.Levels.size()
 	
 	clone_spawn_timer = Timer.new()
-	clone_spawn_timer.wait_time = 3  # Interval between clone spawns
+	clone_spawn_timer.wait_time = 2.5  # Interval between clone spawns
 	clone_spawn_timer.one_shot = false
 	clone_spawn_timer.timeout.connect(_spawn_next_clone)
 	add_child(clone_spawn_timer)
