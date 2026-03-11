@@ -44,7 +44,7 @@ func apply_horizontal_force(delta, input_axis):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 func jump_check():
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = -jump_force
 
 func update_animation(input_axis):
