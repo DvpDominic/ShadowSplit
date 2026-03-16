@@ -5,6 +5,7 @@ class_name SceneManager
 @onready var portal = $Portal
 @export var switch_rect : ColorRect
 @export var switcher : ShaderMaterial
+@onready var TimeText = $TimeText
 
 func _ready():
 	switcher.set_shader_parameter("flip",0)

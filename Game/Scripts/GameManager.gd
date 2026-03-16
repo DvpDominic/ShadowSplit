@@ -30,11 +30,15 @@ func _ready():
 	add_child(clone_spawn_timer)
 	
 	scene_timer = Timer.new()
-	scene_timer.wait_time = 60
+	scene_timer.wait_time = 31
 	scene_timer.one_shot = false
 	scene_timer.timeout.connect(_restart_level)
 	add_child(scene_timer)
 	scene_timer.start()
+
+func _physics_process(delta):
+	if(scene_manager!= null):
+		scene_manager.TimeText.text = str(scene_timer.time_left).pad_decimals(0)
 
 func _restart_level():
 	_end_level(null,null,false)
@@ -46,6 +50,7 @@ func spawn_player():
 	scene_manager.add_child(player)
 
 func _portal_entered(body):
+	scene_timer.stop()
 	if(is_second_run):
 		_end_level(null,null,true)
 		return
@@ -120,4 +125,4 @@ func _play_next_level(status):
 			get_tree().call_deferred("change_scene_to_packed", levels.Levels[current_level])
 	else:
 		get_tree().call_deferred("reload_current_scene")
-	scene_timer.stop()
+	scene_timer.start()
