@@ -38,7 +38,9 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1)
 pivot_offset = Vector2(1080, 360)
 
-[node name="Thankyoutext" type="Label" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartText" type="Label" parent="CanvasLayer"]
 offset_right = 1080.0
 offset_bottom = 720.0
 text = "Complete the level, time travel and complete the level again by beating your shadow."
@@ -46,7 +48,14 @@ label_settings = SubResource("LabelSettings_763c8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="InstText" type="Label" parent="CanvasLayer"]
+offset_top = 230.0
+offset_right = 1080.0
+offset_bottom = 950.0
+text = "Press Arrow keys to move, Space to jump"
+label_settings = SubResource("LabelSettings_763c8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TvEffect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_pyd7h")
@@ -55,11 +64,11 @@ offset_top = -4.0
 offset_right = 1079.0
 offset_bottom = 720.0
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="StartButton" type="Button" parent="CanvasLayer"]
 offset_left = 490.0
 offset_top = 453.0
 offset_right = 590.0
 offset_bottom = 503.0
 text = "Start"
 
-[connection signal="button_down" from="CanvasLayer/Button" to="." method="_on_start_button"]
+[connection signal="button_down" from="CanvasLayer/StartButton" to="." method="_on_start_button"]

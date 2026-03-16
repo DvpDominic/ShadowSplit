@@ -90,7 +90,6 @@ func _spawn_multiple_clones():
 		for i in range(0,points.size()):
 			var clone = clone_scene.instantiate()
 			var num = size * points[i]
-			print(num)
 			var frame = recorded_ghost_data[num]
 			var data = recorded_ghost_data.slice(0,num)
 			clone.global_position = frame["pos"]
